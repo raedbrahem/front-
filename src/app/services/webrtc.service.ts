@@ -29,17 +29,25 @@ export class WebRTCService {
   async startWebcam(): Promise<MediaStream> {
     this.localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
     this.remoteStream = new MediaStream();
-
+  
+    // Push tracks from local stream to peer connection
     this.localStream.getTracks().forEach((track) => {
       this.pc.addTrack(track, this.localStream!);
     });
-
+  
+    // Pull tracks from remote stream, add to video stream
     this.pc.ontrack = (event) => {
       event.streams[0].getTracks().forEach((track) => {
         this.remoteStream!.addTrack(track);
       });
+  
+      // Update the remote video element
+      const remoteVideo = document.getElementById('remoteVideo') as HTMLVideoElement;
+      if (remoteVideo) {
+        remoteVideo.srcObject = this.remoteStream;
+      }
     };
-
+  
     return this.localStream;
   }
 

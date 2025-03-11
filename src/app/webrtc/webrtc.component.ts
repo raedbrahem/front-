@@ -48,6 +48,8 @@ export class WebrtcComponent {
     this.errorMessage = '';
     try {
       await this.webRTCService.answerCall(this.callInput);
+  
+      // Assign the remote stream to the remote video element
       const remoteVideo = document.getElementById('remoteVideo') as HTMLVideoElement;
       remoteVideo.srcObject = this.webRTCService.getRemoteStream();
     } catch (error) {
