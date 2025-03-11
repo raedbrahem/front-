@@ -1,0 +1,28 @@
+/* webrtc.component.css */
+.videos {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+video {
+  width: 45%;
+  border: 1px solid #ccc;
+  background: #000;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+}
+
+.loading-spinner {
+  margin: 10px 0;
+  font-size: 18px;
+}
