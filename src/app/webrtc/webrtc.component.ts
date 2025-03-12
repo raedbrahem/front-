@@ -11,7 +11,7 @@ export class WebrtcComponent {
   errorMessage: string = ''; // For displaying errors
   loading: boolean = false; // For showing a loading state
 
-  constructor(private webRTCService: WebRTCService) {}
+  constructor(public webRTCService: WebRTCService) {}
 
   // Start the webcam and display the local video stream
   async startWebcam() {

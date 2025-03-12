@@ -12,6 +12,10 @@
 
 <button (click)="startWebcam()" [disabled]="loading">Start webcam</button>
 
+<div *ngIf="!webRTCService.getLocalStream()" class="info-message">
+  The connection is closed. Click "Start webcam" to begin a new call.
+</div>
+
 <h2>2. Create a new Call</h2>
 <button (click)="createCall()" [disabled]="loading">Create Call (offer)</button>
 

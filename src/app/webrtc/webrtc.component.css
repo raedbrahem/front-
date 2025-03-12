@@ -26,3 +26,9 @@ button {
   margin: 10px 0;
   font-size: 18px;
 }
+
+.info-message {
+  color: #666;
+  font-style: italic;
+  margin: 10px 0;
+}

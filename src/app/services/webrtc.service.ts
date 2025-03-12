@@ -10,7 +10,7 @@ interface CallData {
   providedIn: 'root'
 })
 export class WebRTCService {
-  private pc: RTCPeerConnection;
+  private pc: RTCPeerConnection | null = null;
   private localStream: MediaStream | null = null;
   private remoteStream: MediaStream | null = null;
 
@@ -27,15 +27,31 @@ export class WebRTCService {
   }
 
   async startWebcam(): Promise<MediaStream> {
+    // Close any existing connection
+    if (this.pc) {
+      this.pc.close();
+      this.pc = null;
+    }
+  
+    // Create a new RTCPeerConnection
+    const servers = {
+      iceServers: [
+        { urls: ['stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302'] },
+      ],
+      iceCandidatePoolSize: 10,
+    };
+    this.pc = new RTCPeerConnection(servers);
+  
+    // Get the local stream
     this.localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
     this.remoteStream = new MediaStream();
   
-    // Push tracks from local stream to peer connection
+    // Add tracks to the new RTCPeerConnection
     this.localStream.getTracks().forEach((track) => {
-      this.pc.addTrack(track, this.localStream!);
+      this.pc!.addTrack(track, this.localStream!); // Use non-null assertion operator
     });
   
-    // Pull tracks from remote stream, add to video stream
+    // Handle remote tracks
     this.pc.ontrack = (event) => {
       event.streams[0].getTracks().forEach((track) => {
         this.remoteStream!.addTrack(track);
@@ -52,55 +68,63 @@ export class WebRTCService {
   }
 
   async createOffer(): Promise<string> {
+    if (!this.pc) {
+      throw new Error('RTCPeerConnection is not initialized.');
+    }
+  
     const callDoc = doc(collection(this.firestore, 'calls'));
     const offerCandidates = collection(callDoc, 'offerCandidates');
     const answerCandidates = collection(callDoc, 'answerCandidates');
-
+  
     this.pc.onicecandidate = (event) => {
       if (event.candidate) {
-        const candidateDoc = doc(offerCandidates); // Create a new document reference
+        const candidateDoc = doc(offerCandidates);
         setDoc(candidateDoc, event.candidate.toJSON());
       }
     };
-
+  
     const offerDescription = await this.pc.createOffer();
     await this.pc.setLocalDescription(offerDescription);
-
+  
     const offer = {
       sdp: offerDescription.sdp,
       type: offerDescription.type,
     };
-
+  
     await setDoc(callDoc, { offer });
-
+  
     onSnapshot(callDoc, (snapshot) => {
       const data = snapshot.data() as CallData;
-      if (!this.pc.currentRemoteDescription && data?.answer) {
+      if (!this.pc!.currentRemoteDescription && data?.answer) { // Use non-null assertion operator
         const answerDescription = new RTCSessionDescription(data.answer);
-        this.pc.setRemoteDescription(answerDescription);
+        this.pc!.setRemoteDescription(answerDescription); // Use non-null assertion operator
       }
     });
-
+  
     onSnapshot(answerCandidates, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
           const candidate = new RTCIceCandidate(change.doc.data());
-          this.pc.addIceCandidate(candidate);
+          this.pc!.addIceCandidate(candidate); // Use non-null assertion operator
         }
       });
     });
-
+  
     return callDoc.id;
   }
 
   async answerCall(callId: string): Promise<void> {
+    if (!this.pc) {
+      throw new Error('RTCPeerConnection is not initialized.');
+    }
+  
     const callDoc = doc(this.firestore, 'calls', callId);
     const answerCandidates = collection(callDoc, 'answerCandidates');
     const offerCandidates = collection(callDoc, 'offerCandidates');
   
     this.pc.onicecandidate = (event) => {
       if (event.candidate) {
-        const candidateDoc = doc(answerCandidates); // Create a new document reference
+        const candidateDoc = doc(answerCandidates);
         setDoc(candidateDoc, event.candidate.toJSON());
       }
     };
@@ -108,12 +132,10 @@ export class WebRTCService {
     const callData = (await getDoc(callDoc)).data() as CallData;
     const offerDescription = callData.offer;
   
-    // Check if offerDescription is defined
     if (!offerDescription) {
       throw new Error('No offer found in the call document.');
     }
   
-    // Now TypeScript knows offerDescription is defined
     await this.pc.setRemoteDescription(new RTCSessionDescription(offerDescription));
   
     const answerDescription = await this.pc.createAnswer();
@@ -130,7 +152,7 @@ export class WebRTCService {
       snapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
           const data = change.doc.data();
-          this.pc.addIceCandidate(new RTCIceCandidate(data));
+          this.pc!.addIceCandidate(new RTCIceCandidate(data)); // Use non-null assertion operator
         }
       });
     });
@@ -146,7 +168,10 @@ export class WebRTCService {
   }
 
   hangup(): void {
-    this.pc.close();
+    if (this.pc) {
+      this.pc.close(); // Close the existing connection
+      this.pc = null; // Reset the RTCPeerConnection
+    }
     this.localStream?.getTracks().forEach(track => track.stop());
     this.remoteStream?.getTracks().forEach(track => track.stop());
     this.localStream = null;
