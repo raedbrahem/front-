@@ -1,0 +1,11 @@
+<div class="container" *ngIf="serviceEtude">
+    <h2>Service Étude Details</h2>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>ID:</strong> {{ serviceEtude.id }}</li>
+      <li class="list-group-item"><strong>Subject:</strong> {{ serviceEtude.subject }}</li>
+      <li class="list-group-item"><strong>Description:</strong> {{ serviceEtude.description }}</li>
+      <li class="list-group-item"><strong>Status:</strong> {{ serviceEtude.status }}</li>
+    </ul>
+    <button (click)="goBack()" class="btn btn-secondary mt-3">Back</button>
+  </div>
+  

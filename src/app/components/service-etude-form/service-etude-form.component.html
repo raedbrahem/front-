@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>{{ id ? 'Edit' : 'Create' }} Service Étude</h2>
+    <form (submit)="save()">
+      <div class="mb-3">
+        <label>Subject</label>
+        <input type="text" class="form-control" [(ngModel)]="serviceEtude.subject" name="subject" required>
+      </div>
+      <div class="mb-3">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="serviceEtude.description" name="description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Save</button>
+      <a routerLink="/servicetude" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+  

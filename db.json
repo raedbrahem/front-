@@ -1,0 +1,25 @@
+{
+  "serviceEtudes": [
+    {
+      "id": "1",
+      "subject": "Math Analysis",
+      "description": "Advanced calculus lesson",
+      "publicationDate": "2024-03-10T00:00:00.000Z",
+      "tutor": {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com"
+      },
+      "commentaires": [],
+      "ratings": [],
+      "clients": [],
+      "status": "active"
+    },
+    {
+      "id": "2",
+      "subject": "mafs",
+      "description": "mathematiques de base"
+    }
+  ]
+}

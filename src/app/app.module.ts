@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Add this import
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Add this import
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { firebaseConfig } from './firebase.config';
@@ -10,19 +10,28 @@ import { WebrtcComponent } from './webrtc/webrtc.component';
 import { HomeComponent } from './home/home.component'; // Add this import
 import { HeaderComponent } from './header/header.component'; // Add this import
 import { FooterComponent } from './footer/footer.component'; // Add this import
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceEtudeComponent } from './components/service-etude/service-etude.component';
+import { ServiceEtudeFormComponent } from './components/service-etude-form/service-etude-form.component';
+import { ServiceEtudeDetailComponent } from './components/service-etude-detail/service-etude-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     WebrtcComponent,
     HomeComponent, // Add this line
     HeaderComponent, // Add this line
-    FooterComponent
+    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule, // Add this line
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

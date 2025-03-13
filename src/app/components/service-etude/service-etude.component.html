@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Service Études</h2>
+    <a routerLink="/servicetude/new" class="btn btn-primary">Add Service</a>
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Subject</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of serviceEtudes">
+          <td>{{ service.id }}</td>
+          <td>{{ service.subject }}</td>
+          <td>{{ service.description }}</td>
+          <td>
+            <a [routerLink]="['/servicetude', service.id]" class="btn btn-info">View</a>
+            <a [routerLink]="['/servicetude/edit', service.id]" class="btn btn-warning">Edit</a>
+            <button (click)="deleteServiceEtude(service.id)" class="btn btn-danger">Delete</button>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
