@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceEtudeComponent } from './components/service-etude/service-etude.component';
 import { ServiceEtudeFormComponent } from './components/service-etude-form/service-etude-form.component';
 import { ServiceEtudeDetailComponent } from './components/service-etude-detail/service-etude-detail.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // Import FullCalendarModule
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,7 @@ import { ServiceEtudeDetailComponent } from './components/service-etude-detail/s
     WebrtcComponent,
     HomeComponent, // Add this line
     HeaderComponent, // Add this line
-    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent
+    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { ServiceEtudeDetailComponent } from './components/service-etude-detail/s
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
