@@ -16,7 +16,12 @@ import { ServiceEtudeComponent } from './components/service-etude/service-etude.
 import { ServiceEtudeFormComponent } from './components/service-etude-form/service-etude-form.component';
 import { ServiceEtudeDetailComponent } from './components/service-etude-detail/service-etude-detail.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { FullCalendarModule } from '@fullcalendar/angular'; // Import FullCalendarModule
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { AverageRatingPerTutorComponent } from './components/stat/average-rating-per-tutor/average-rating-per-tutor.component';
+import { NumberOfSessionsPerTutorComponent } from './components/stat/number-of-sessions-per-tutor/number-of-sessions-per-tutor.component';
+import { TotalHoursPerTutorComponent } from './components/stat/total-hours-per-tutor/total-hours-per-tutor.component';
+import { MostPopularSubjectsComponent } from './components/stat/most-popular-subjects/most-popular-subjects.component';
+import { BusiestTimesComponent } from './components/stat/busiest-times/busiest-times.component'; // Import FullCalendarModule
 
 
 @NgModule({
@@ -25,7 +30,7 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // Import FullCalend
     WebrtcComponent,
     HomeComponent, // Add this line
     HeaderComponent, // Add this line
-    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent
+    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent, AverageRatingPerTutorComponent, NumberOfSessionsPerTutorComponent, TotalHoursPerTutorComponent, MostPopularSubjectsComponent, BusiestTimesComponent
   ],
   imports: [
     BrowserModule,

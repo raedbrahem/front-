@@ -1,0 +1,15 @@
+<h2>Total Hours Per Tutor</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Tutor ID</th>
+      <th>Total Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of totalHoursPerTutor | keyvalue">
+      <td>{{ entry.key }}</td>
+      <td>{{ entry.value }}</td>
+    </tr>
+  </tbody>
+</table>

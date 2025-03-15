@@ -1,0 +1,15 @@
+<h2>Busiest Times</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Hour</th>
+      <th>Number of Sessions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of busiestTimes | keyvalue">
+      <td>{{ item.key }}</td>
+      <td>{{ item.value }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<h2>Number of Sessions Per Tutor</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Tutor ID</th>
+      <th>Number of Sessions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of sessionsPerTutor | keyvalue">
+      <td>{{ entry.key }}</td>
+      <td>{{ entry.value }}</td>
+    </tr>
+  </tbody>
+</table>

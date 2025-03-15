@@ -1,0 +1,15 @@
+<h2>Average Rating Per Tutor</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Tutor ID</th>
+      <th>Average Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of averageRatings | keyvalue">
+      <td>{{ entry.key }}</td>
+      <td>{{ entry.value }}</td>
+    </tr>
+  </tbody>
+</table>
