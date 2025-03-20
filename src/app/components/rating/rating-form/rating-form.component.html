@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>{{ isEditMode ? 'Edit' : 'Add' }} Rating</h2>
+    <form (submit)="saveRating()">
+      <!-- Stars -->
+      <div class="mb-3">
+        <label>Stars</label>
+        <input type="number" class="form-control" [(ngModel)]="rating.stars" name="stars" required min="1" max="5">
+      </div>
+  
+      <!-- Date -->
+      <div class="mb-3">
+        <label>Date</label>
+        <input type="date" class="form-control" [(ngModel)]="rating.dateRating" name="dateRating" required>
+      </div>
+  
+      <!-- User ID -->
+      <div class="mb-3">
+        <label>User ID</label>
+        <input type="number" class="form-control" [(ngModel)]="rating.user.id" name="userId" required>
+      </div>
+  
+      <!-- Service ID -->
+      <div class="mb-3">
+        <label>Service ID</label>
+        <input type="number" class="form-control" [(ngModel)]="rating.serviceEtude.id" name="serviceId" required>
+      </div>
+  
+      <!-- Save Button -->
+      <button type="submit" class="btn btn-success">Save</button>
+      <a routerLink="/ratings" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>

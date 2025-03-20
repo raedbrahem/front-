@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Ratings List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Stars</th>
+          <th>Date</th>
+          <th>User</th>
+          <th>Service ID</th>
+          <th>Service Subject</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rating of ratings">
+          <td>{{ rating.id }}</td>
+          <td>{{ rating.stars }}</td>
+          <td>{{ rating.dateRating | date }}</td>
+          <td>{{ rating.user.firstName }} {{ rating.user.lastName }}</td>
+          <td>{{ rating.serviceEtude.id }}</td>
+          <td>{{ rating.serviceEtude.subject }}</td>
+          <td>
+            <!-- Edit Button -->
+            <button class="btn btn-primary me-2" (click)="editRating(rating.id!)">Edit</button>
+            <!-- Delete Button -->
+            <button class="btn btn-danger" (click)="deleteRating(rating.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

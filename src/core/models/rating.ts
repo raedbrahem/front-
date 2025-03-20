@@ -1,5 +1,5 @@
 export class RatingEtude {
-    id!: number;
+    id!: number | null;
     stars!: number; // Rating value from 1 to 5
     dateRating!: Date;
     user!: {
@@ -8,7 +8,11 @@ export class RatingEtude {
       lastName: string;
       email: string;
     };
-    serviceEtudeId!: number;
+    serviceEtude!: { // Change this to match the backend
+      id: number;
+      subject: string;
+      description: string;
+    };
   
     constructor(data?: Partial<RatingEtude>) {
       Object.assign(this, data);

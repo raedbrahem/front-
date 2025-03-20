@@ -21,7 +21,9 @@ import { AverageRatingPerTutorComponent } from './components/stat/average-rating
 import { NumberOfSessionsPerTutorComponent } from './components/stat/number-of-sessions-per-tutor/number-of-sessions-per-tutor.component';
 import { TotalHoursPerTutorComponent } from './components/stat/total-hours-per-tutor/total-hours-per-tutor.component';
 import { MostPopularSubjectsComponent } from './components/stat/most-popular-subjects/most-popular-subjects.component';
-import { BusiestTimesComponent } from './components/stat/busiest-times/busiest-times.component'; // Import FullCalendarModule
+import { BusiestTimesComponent } from './components/stat/busiest-times/busiest-times.component';
+import { RatingListComponent } from './components/rating/rating-list/rating-list.component';
+import { RatingFormComponent } from './components/rating/rating-form/rating-form.component'; // Import FullCalendarModule
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { BusiestTimesComponent } from './components/stat/busiest-times/busiest-t
     WebrtcComponent,
     HomeComponent, // Add this line
     HeaderComponent, // Add this line
-    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent, AverageRatingPerTutorComponent, NumberOfSessionsPerTutorComponent, TotalHoursPerTutorComponent, MostPopularSubjectsComponent, BusiestTimesComponent
+    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent, AverageRatingPerTutorComponent, NumberOfSessionsPerTutorComponent, TotalHoursPerTutorComponent, MostPopularSubjectsComponent, BusiestTimesComponent, RatingListComponent, RatingFormComponent
   ],
   imports: [
     BrowserModule,
