@@ -22,7 +22,7 @@ export class ServiceEtudeComponent implements OnInit {
     });
   }
 
-  deleteServiceEtude(id: number): void {
+  deleteServiceEtude(id: any): void {
     if (confirm('Are you sure you want to delete this service?')) {
       this.serviceEtudeService.deleteServiceEtude(id).subscribe(() => {
         this.serviceEtudes = this.serviceEtudes.filter(service => service.id !== id);
