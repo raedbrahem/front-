@@ -14,10 +14,13 @@
     </div>
 
     <!-- Tutor Dropdown -->
-    <div class="mb-3">
-      <label>Tutor</label>
-      <input type="number" class="form-control" [(ngModel)]="serviceEtude.tutor" name="tutor" required>
-    </div>
+<!-- Tutor ID Input -->
+<div class="mb-3">
+  <label>Tutor</label>
+  <input type="number" class="form-control" [(ngModel)]="serviceEtude.tutor.id" name="tutorId" required>
+</div>
+
+    
 
     <!-- Save and Cancel Buttons -->
     <button type="submit" class="btn btn-success">Save</button>

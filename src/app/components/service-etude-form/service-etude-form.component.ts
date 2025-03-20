@@ -15,7 +15,7 @@ export class ServiceEtudeFormComponent implements OnInit {
     id: null, // Allowed because id can be number | null
     subject: '',
     description: '',
-    tutor:null,
+    tutor:{ id: 0},
     publicationDate: null, // Allowed because publicationDate can be Date | null
     commentaires: [],
     ratings: [],

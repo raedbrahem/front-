@@ -1,5 +1,6 @@
 <div class="container">
     <h2>Ratings List</h2>
+    <a routerLink="/ratings/new" class="btn btn-primary">Add Rating</a>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -17,9 +18,8 @@
           <td>{{ rating.id }}</td>
           <td>{{ rating.stars }}</td>
           <td>{{ rating.dateRating | date }}</td>
-          <td>{{ rating.user.firstName }} {{ rating.user.lastName }}</td>
+          <td>{{ rating.user.id }}</td>
           <td>{{ rating.serviceEtude.id }}</td>
-          <td>{{ rating.serviceEtude.subject }}</td>
           <td>
             <!-- Edit Button -->
             <button class="btn btn-primary me-2" (click)="editRating(rating.id!)">Edit</button>

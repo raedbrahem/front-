@@ -17,10 +17,11 @@ const routes: Routes = [
   { path: 'servicetude/new', component: ServiceEtudeFormComponent }, // For Adding
   { path: 'servicetude/edit/:id', component: ServiceEtudeFormComponent }, // For Editing
   { path: 'servicetude/:id', component: ServiceEtudeDetailComponent }, // For Viewing
-  { path: 'rating', component: RatingListComponent },
+  { path: 'ratings', component: RatingListComponent },
   { path: 'ratings/edit/:id', component: RatingFormComponent },
   { path: 'webrtc', component: WebrtcComponent },
   { path: 'calendar', component: CalendarComponent },
+  { path: 'ratings/new', component: RatingFormComponent }, // Route to add a new rating
   { path: '**', redirectTo: 'home' }
 ];
 

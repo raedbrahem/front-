@@ -4,14 +4,9 @@ export class RatingEtude {
     dateRating!: Date;
     user!: {
       id: number;
-      firstName: string;
-      lastName: string;
-      email: string;
     };
     serviceEtude!: { // Change this to match the backend
       id: number;
-      subject: string;
-      description: string;
     };
   
     constructor(data?: Partial<RatingEtude>) {

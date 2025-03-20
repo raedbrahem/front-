@@ -13,8 +13,8 @@ export class RatingFormComponent implements OnInit {
     id: null,
     stars: 0,
     dateRating: new Date(),
-    user: { id: 0, firstName: '', lastName: '', email: '' },
-    serviceEtude: { id: 0, subject: '', description: '' }, // Updated to match the new model
+    user: { id: 0},
+    serviceEtude: { id: 0}, // Updated to match the new model
   };
   isEditMode = false;
 
@@ -40,13 +40,19 @@ export class RatingFormComponent implements OnInit {
   }
 
   saveRating(): void {
+    // Format the dateRating to include time (e.g., 'T00:00:00')
+    const formattedDate = `${this.rating.dateRating}T00:00:00`;
+    this.rating.dateRating = new Date(formattedDate);
+  
+    console.log('Payload being sent:', this.rating); // Debugging
+  
     if (this.isEditMode) {
       this.ratingService.updateRating(this.rating.id!, this.rating).subscribe({
         next: () => {
           this.router.navigate(['/ratings']);
         },
         error: (err) => {
-          console.error('Failed to update rating:', err);
+          console.error('Failed to update rating:', err.error); // Log the full error response
         },
       });
     } else {
@@ -55,7 +61,7 @@ export class RatingFormComponent implements OnInit {
           this.router.navigate(['/ratings']);
         },
         error: (err) => {
-          console.error('Failed to add rating:', err);
+          console.error('Failed to add rating:', err.error); // Log the full error response
         },
       });
     }

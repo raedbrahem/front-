@@ -6,7 +6,9 @@ export interface ServiceEtude {
   id: number | null; // Allow null for id
   subject: string;
   description: string;
-  tutor: User | null; // Assuming User is another model
+  tutor: {
+    id: number;
+  };
   publicationDate: Date | null; // Allow null for publicationDate
   commentaires: Commentaire[]; // Assuming Commentaire is another model
   ratings: RatingEtude[]; // Assuming RatingEtude is another model
