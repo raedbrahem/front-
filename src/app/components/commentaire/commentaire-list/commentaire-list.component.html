@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Commentaires List</h2>
+  <a routerLink="/commentaires/add" class="btn btn-primary mb-3">Add Commentaire</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>User ID</th>
+        <th>Service Etude ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commentaire of commentaires">
+        <td>{{ commentaire.id }}</td>
+        <td>{{ commentaire.contenu }}</td>
+        <td>{{ commentaire.datePublication | date }}</td>
+        <td>{{ commentaire.user.id }}</td>
+        <td>{{ commentaire.serviceEtude.id }}</td>
+        <td>
+          <!-- Edit Button -->
+          <button class="btn btn-primary me-2" (click)="editCommentaire(commentaire.id!)">
+            Edit
+          </button>
+          <!-- Delete Button -->
+          <button class="btn btn-danger" (click)="deleteCommentaire(commentaire.id!)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

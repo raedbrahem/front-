@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Commentaire</h2>
+  <form (ngSubmit)="saveCommentaire()">
+    <!-- Content Field -->
+    <div class="mb-3">
+      <label for="contenu">Content</label>
+      <textarea
+        id="contenu"
+        class="form-control"
+        [(ngModel)]="commentaire.contenu"
+        name="contenu"
+        required
+      ></textarea>
+    </div>
+
+    <!-- User ID Field -->
+    <div class="mb-3">
+      <label for="user">User ID</label>
+      <input
+        type="number"
+        id="user"
+        class="form-control"
+        [(ngModel)]="commentaire.user.id"
+        name="user"
+        required
+      />
+    </div>
+
+    <!-- Service Etude ID Field -->
+    <div class="mb-3">
+      <label for="serviceEtude">Service Etude ID</label>
+      <input
+        type="number"
+        id="serviceEtude"
+        class="form-control"
+        [(ngModel)]="commentaire.serviceEtude.id"
+        name="serviceEtude"
+        required
+      />
+    </div>
+
+    <!-- Save and Cancel Buttons -->
+    <button type="submit" class="btn btn-success me-2">
+      {{ isEditMode ? 'Update' : 'Add' }} Commentaire
+    </button>
+    <a routerLink="/commentaires" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
