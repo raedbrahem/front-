@@ -1,0 +1,36 @@
+<!-- src/app/components/tutoring-event/tutoring-event-list/tutoring-event-list.component.html -->
+<div class="container">
+    <h2>Tutoring Events</h2>
+    <a routerLink="/tutoring-events/add" class="btn btn-primary mb-3">Add New Tutoring Event</a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Status</th>
+          <th>Tutor ID</th>
+          <th>Student ID</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of tutoringEvents">
+          <td>{{ event.id }}</td>
+          <td>{{ event.title }}</td>
+          <td>{{ event.startTime | date:'medium' }}</td>
+          <td>{{ event.endTime | date:'medium' }}</td>
+          <td>{{ event.status }}</td>
+          <td>{{ event.tutor }}</td>
+          <td>{{ event.student }}</td>
+          <td>{{ event.price | currency }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="editTutoringEvent(event.id!)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteTutoringEvent(event.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

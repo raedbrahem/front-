@@ -11,6 +11,8 @@ import { RatingListComponent } from './components/rating/rating-list/rating-list
 import { RatingFormComponent } from './components/rating/rating-form/rating-form.component';
 import { CommentaireListComponent } from './components/commentaire/commentaire-list/commentaire-list.component';
 import { CommentaireFormComponent } from './components/commentaire/commentaire-form/commentaire-form.component';
+import { TutoringEventListComponent } from './components/tutoring-event/tutoring-event-list/tutoring-event-list.component';
+import { TutoringEventFormComponent } from './components/tutoring-event/tutoring-event-form/tutoring-event-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: 'commentaires', component: CommentaireListComponent },
   { path: 'commentaires/add', component: CommentaireFormComponent },
   { path: 'commentaires/edit/:id', component: CommentaireFormComponent },
+  { path: 'tutoring-events', component: TutoringEventListComponent },
+  { path: 'tutoring-events/add', component: TutoringEventFormComponent },
+  { path: 'tutoring-events/edit/:id', component: TutoringEventFormComponent },
 ];
 
 

@@ -26,6 +26,8 @@ import { RatingListComponent } from './components/rating/rating-list/rating-list
 import { RatingFormComponent } from './components/rating/rating-form/rating-form.component';
 import { CommentaireFormComponent } from './components/commentaire/commentaire-form/commentaire-form.component';
 import { CommentaireListComponent } from './components/commentaire/commentaire-list/commentaire-list.component';
+import { TutoringEventFormComponent } from './components/tutoring-event/tutoring-event-form/tutoring-event-form.component';
+import { TutoringEventListComponent } from './components/tutoring-event/tutoring-event-list/tutoring-event-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { CommentaireListComponent } from './components/commentaire/commentaire-l
     WebrtcComponent,
     HomeComponent, // Add this line
     HeaderComponent, // Add this line
-    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent, AverageRatingPerTutorComponent, NumberOfSessionsPerTutorComponent, TotalHoursPerTutorComponent, MostPopularSubjectsComponent, BusiestTimesComponent, RatingListComponent, RatingFormComponent, CommentaireFormComponent, CommentaireListComponent
+    FooterComponent, ServiceEtudeComponent, ServiceEtudeFormComponent, ServiceEtudeDetailComponent, CalendarComponent, AverageRatingPerTutorComponent, NumberOfSessionsPerTutorComponent, TotalHoursPerTutorComponent, MostPopularSubjectsComponent, BusiestTimesComponent, RatingListComponent, RatingFormComponent, CommentaireFormComponent, CommentaireListComponent, TutoringEventFormComponent, TutoringEventListComponent
   ],
   imports: [
     BrowserModule,

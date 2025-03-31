@@ -1,9 +1,19 @@
+// tutoring-event.model.ts
 export class TutoringEvent {
-    id!: number;
-    title!: string;
-    startTime!: string; // Use string for ISO 8601 format (e.g., "2023-10-15T10:00:00")
-    endTime!: string;   // Use string for ISO 8601 format (e.g., "2023-10-15T12:00:00")
-    status!: string;
-    tutor!: number;
-    student!: number;
+  id!: number | null;
+  title!: string;
+  startTime!: string;
+  endTime!: string;
+  status!: string;
+  tutor!: { id: number };
+  student!: { id: number };
+  serviceEtude!: { id: number }; // Add this required field
+  price!: number;
+
+  constructor(data?: Partial<TutoringEvent>) {
+    Object.assign(this, data);
+    this.tutor = this.tutor || { id: 0 };
+    this.student = this.student || { id: 0 };
+    this.serviceEtude = this.serviceEtude || { id: 0 }; // Initialize
   }
+}
