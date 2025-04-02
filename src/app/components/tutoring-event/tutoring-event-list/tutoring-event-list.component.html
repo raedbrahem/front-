@@ -10,7 +10,6 @@
           <th>Start Time</th>
           <th>End Time</th>
           <th>Status</th>
-          <th>Tutor ID</th>
           <th>Student ID</th>
           <th>Price</th>
           <th>Actions</th>
@@ -23,8 +22,7 @@
           <td>{{ event.startTime | date:'medium' }}</td>
           <td>{{ event.endTime | date:'medium' }}</td>
           <td>{{ event.status }}</td>
-          <td>{{ event.tutor }}</td>
-          <td>{{ event.student }}</td>
+          <td>{{ event.student.id }}</td>
           <td>{{ event.price | currency }}</td>
           <td>
             <button class="btn btn-primary me-2" (click)="editTutoringEvent(event.id!)">Edit</button>

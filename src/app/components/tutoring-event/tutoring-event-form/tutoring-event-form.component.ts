@@ -16,7 +16,6 @@ export class TutoringEventFormComponent implements OnInit {
     startTime: '',
     endTime: '',
     status: 'SCHEDULED',
-    tutor: { id: 0 },
     student: { id: 0 },
     serviceEtude: { id: 0 }, // Initialize with default
     price: 0
